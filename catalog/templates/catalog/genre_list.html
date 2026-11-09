@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Genre List</h1>
+  {% if genre_list %}
+    <ul>
+      {% for genre in genre_list %}
+      <li>
+        <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
+        ({{ genre.book_set.count }})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no genres in the library.</p>
+  {% endif %}
+{% endblock %}
+</body>
+</html>
